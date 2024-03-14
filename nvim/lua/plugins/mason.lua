@@ -5,6 +5,7 @@ return {
     ensure_installed = {
       "pyright",
       "ruff-lsp",
+      "black",
       "stylua",
       "shellcheck",
       "shfmt",
