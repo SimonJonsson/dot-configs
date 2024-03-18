@@ -23,9 +23,15 @@ return {
 
       local luasnip = require("luasnip")
       local cmp = require("cmp")
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+
+      opts.completion = {
+        completeopt = "menu,menuone,noinsert,noselect,preview",
+      }
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         --["<Tab>"] = cmp.mapping(function(fallback)
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<C-j>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
