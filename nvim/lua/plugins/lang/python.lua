@@ -28,6 +28,9 @@ return {
       ft = "python",
       servers = {
         ruff_lsp = {
+          handlers = {
+            ["textDocument/publishDiagnostics"] = function() end,
+          },
           keys = {
             {
               "<leader>co",
