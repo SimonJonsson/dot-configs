@@ -1,11 +1,17 @@
 return {
+  -- Extend Mason
   {
     "williamboman/mason.nvim",
+    optional = true,
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { "black", "mypy", "ruff-lsp", "pyright" })
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
+        "pyright",
+        "ruff-lsp",
+        "black",
+      })
     end,
   },
-
   -- Extend treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -21,7 +27,6 @@ return {
     opts = {
       ft = "python",
       servers = {
-        pyright = {},
         ruff_lsp = {
           keys = {
             {

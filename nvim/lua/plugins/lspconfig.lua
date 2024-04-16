@@ -8,7 +8,7 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        -- pyright = {},
       },
     },
   },
@@ -22,7 +22,7 @@ return {
       ---@type lspconfig.options
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
+        -- tsserver = {},
         bicep = {},
       },
     },

@@ -6,7 +6,6 @@ return {
       "pyright",
       "ruff-lsp",
       "black",
-      "mypy",
       "stylua",
       "shellcheck",
       "shfmt",
