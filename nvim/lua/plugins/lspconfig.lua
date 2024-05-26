@@ -5,6 +5,10 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
+      inlay_hints = {
+        enabled = true,
+        -- only_current_line = true,
+      },
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
