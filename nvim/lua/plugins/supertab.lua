@@ -29,6 +29,13 @@ return {
         completeopt = "menu,menuone,noinsert,noselect,preview",
       }
 
+      opts.sorting.comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.kind,
+      }
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         --["<Tab>"] = cmp.mapping(function(fallback)
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
