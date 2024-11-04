@@ -39,8 +39,8 @@ return {
       local opts = { silent = true }
 
       -- Set <C-y> to accept copilot suggestion
-      vim.g.copilot_no_tab_map = true
-      -- keymap("i", "<C-y>", 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
+      vim.g.copilot_no_tab_map = false
+      keymap("i", "<C-c>", 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
 
       -- Set <C-i> to accept line
       keymap("i", "<C-i>", "<Plug>(copilot-accept-line)", opts)
