@@ -28,6 +28,7 @@ return {
       vim.g.copilot_filetypes = {
         ["TelescopePrompt"] = false,
       }
+      vim.g.copilot_enabled = false
 
       -- Set to true to assume that copilot is already mapped
       vim.g.copilot_assume_mapped = true
