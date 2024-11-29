@@ -6,6 +6,9 @@ return {
   opts = {
     -- add any opts here
     provider = "copilot",
+    copilot = {
+      model = "claude-3.5-sonnet",
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
