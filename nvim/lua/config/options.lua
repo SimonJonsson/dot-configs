@@ -10,3 +10,4 @@ vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 vim.opt.autoread = true
 -- disable neovim generating a swapfile and showing the error
 vim.opt.swapfile = false
+vim.opt.laststatus = 3

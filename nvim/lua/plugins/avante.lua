@@ -6,8 +6,27 @@ return {
   opts = {
     -- add any opts here
     provider = "copilot",
+
     copilot = {
       model = "claude-3.5-sonnet",
+      max_tokens = 4096,
+    },
+
+    dual_boost = {
+      enabled = false,
+    },
+
+    behaviour = {
+      auto_suggestions = false, -- Experimental stage
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = false,
+      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+    },
+
+    hints = {
+      enabled = false,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
