@@ -13,8 +13,8 @@ km.set("n", "K", "<nop>") -- K
 
 -- Movement
 -- Keep cursors centered while navigating half-page
-km.set("n", "<C-d>", "<C-d>zz")
-km.set("n", "<C-u>", "<C-u>zz")
+--km.set("n", "<C-d>", "<C-d>zz")
+--km.set("n", "<C-u>", "<C-u>zz")
 -- Search
 km.set("n", "n", "nzzzv")
 km.set("n", "N", "Nzzzv")

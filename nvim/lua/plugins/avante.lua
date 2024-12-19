@@ -26,7 +26,7 @@ return {
     },
 
     hints = {
-      enabled = false,
+      enabled = true,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
