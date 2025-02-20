@@ -3,6 +3,7 @@ general.import = ["~/.config/alacritty/themes/tokyonight/tokyonight_storm.toml"]
 [env]
 TERM = "xterm-256color"
 
+
 [font]
 normal.family = "JetbrainsMono Nerd Font"
 size = 14.0
@@ -17,4 +18,4 @@ y = 0
 
 [terminal.shell]
 program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux"]
+args = ["-l", "-c", "tmux attach || tmux -2"]

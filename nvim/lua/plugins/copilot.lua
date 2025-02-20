@@ -1,14 +1,6 @@
 -- NOTE: Only enable either copilot-vim or codeium-vim at the same time
 -- https://github.com/github/copilot.vim/blob/release/plugin/copilot.vim
 return {
-  -- Disable default <tab> and <s-tab> behavior in LuaSnip
-  {
-    "L3MON4D3/LuaSnip",
-    event = "VeryLazy",
-    keys = function()
-      return {}
-    end,
-  },
   -- Setup copilot.vim
   {
     "github/copilot.vim",
@@ -31,7 +23,7 @@ return {
       local opts = { silent = true }
 
       -- Set <C-y> to accept copilot suggestion
-      vim.g.copilot_no_tab_map = false
+      -- vim.g.copilot_no_tab_map = false
       keymap("i", "<C-f>", 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
 
       -- Set <C-i> to accept line
@@ -57,7 +49,7 @@ return {
         copilot_on = not copilot_on
       end, { nargs = 0 })
 
-      keymap("n", "<leader>ac", ":CopilotToggle<CR>", { desc = "Toggle copilot", noremap = true, silent = true })
+      keymap("n", "<leader>ao", ":CopilotToggle<CR>", { desc = "Toggle copilot", noremap = true, silent = true })
     end,
   },
 }
