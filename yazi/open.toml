@@ -1,0 +1,3 @@
+[[open]]
+run = "nvim $1"
+only_files = true
