@@ -4,3 +4,8 @@ end
 
 # Created by `pipx` on 2025-03-12 09:34:35
 set PATH $PATH /Users/simonjonsson/.local/bin
+
+alias prun='poetry run nvim'
+alias vim='nvim'
+alias cls='clear'
+alias tmuxkill='tmux kill-server && tmux || tmux'
