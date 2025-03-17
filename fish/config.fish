@@ -9,3 +9,6 @@ alias prun='poetry run nvim'
 alias vim='nvim'
 alias cls='clear'
 alias tmuxkill='tmux kill-server && tmux || tmux'
+
+# Created by `pipx` on 2025-03-14 07:53:37
+set PATH $PATH /Users/simon/.local/bin
