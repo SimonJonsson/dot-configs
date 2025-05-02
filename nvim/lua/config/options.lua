@@ -12,3 +12,5 @@ vim.opt.autoread = true
 -- disable neovim generating a swapfile and showing the error
 vim.opt.swapfile = false
 vim.opt.laststatus = 3
+
+vim.g.snacks_animate = false
