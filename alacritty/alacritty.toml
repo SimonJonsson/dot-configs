@@ -1,4 +1,7 @@
-general.import = ["~/.config/alacritty/themes/tokyonight/tokyonight_storm.toml"]
+# general.import = ["~/.config/alacritty/themes/tokyonight/tokyonight_storm.toml"]
+general.import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
+
+general.live_config_reload = true
 
 [env]
 TERM = "xterm-256color"
@@ -10,6 +13,7 @@ size = 14.0
 
 [window]
 decorations = "None"
+opacity = 0.9
 # startup_mode = "Maximized" # currently broken in GNOME
 
 [window.padding]
@@ -17,5 +21,5 @@ x = 0
 y = 0
 
 [terminal.shell]
-program = "/opt/homebrew/bin/fish"
+program = "/usr/bin/fish"
 args = ["-l", "-c", "tmux attach || tmux -2"]
