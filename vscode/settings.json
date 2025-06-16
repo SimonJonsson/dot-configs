@@ -1,0 +1,236 @@
+{
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }
+    ],
+    "workbench.colorTheme": "Alt Catppuccin Macchiato",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p",
+                "d"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p",
+                "i"
+            ],
+            "commands": [
+                "editor.action.peekImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "q"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p",
+                "t"
+            ],
+            "commands": [
+                "editor.action.peekTypeDefinition"
+            ]
+        }
+    ],
+    "vspacecode.bindingOverrides": [
+        {
+            "keys": [
+                "g"
+            ],
+            "name": "LazyGit",
+            "type": "command",
+            "commands": [
+                "lazygit.openLazygit"
+            ]
+        },
+        {
+            "keys": [
+                "."
+            ],
+            "name": "Commands...",
+            "type": "command",
+            "command": "workbench.action.showCommands"
+        }
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "editor.cursorSurroundingLines": 10,
+    "[sql]": {
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "sqlfluff.dbtInterface.enabled": true,
+    "sqlfluff.excludeRules": [],
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "files.autoSave": "afterDelay",
+    "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
+    "sqlfluff.dialect": "databricks",
+    "sqlfluff.executablePath": "sqlfluff -vvvv",
+    "sqlfluff.ignoreLocalConfig": false,
+    /* Linter */
+    "sqlfluff.linter.arguments": [],
+    "sqlfluff.linter.run": "onType",
+    /* Formatter */
+    "sqlfluff.format.languages": [
+        "sql",
+        "jinja-sql",
+        "postgres",
+        "snowflake-sql",
+        "dbt"
+    ],
+    "sqlfluff.format.enabled": true,
+    "sqlfluff.experimental.format.executeInTerminal": true,
+    "editor.fontSize": 14,
+    "window.density.editorTabHeight": "compact",
+    "editor.lineNumbers": "relative",
+    "editor.guides.highlightActiveIndentation": false,
+    "editor.guides.indentation": false,
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "explorer.confirmDelete": false,
+    "editor.inlayHints.enabled": "off",
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "files.hotExit": "off",
+    "github.copilot.chat.agent.thinkingTool": true,
+    "altimate.onboardedMcpServer": true,
+    "dbt.enableMcpDataSourceQueryTools": true,
+    "git.openRepositoryInParentFolders": "never",
+    "python.analysis.typeCheckingMode": "standard"
+}
