@@ -13,6 +13,9 @@ alias lg='lazygit'
 alias dbx_stg='rm -f ~/.databrickscfg && cp ~/.databrickscfg_stg ~/.databrickscfg'
 alias dbx_dev='rm -f ~/.databrickscfg && cp ~/.databrickscfg_dev ~/.databrickscfg'
 alias dbx_prd='rm -f ~/.databrickscfg && cp ~/.databrickscfg_prd ~/.databrickscfg'
+#
+# Ensure LLVM clangd takes precedence over Apple clangd
+set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
 
 # Created by `pipx` on 2025-03-14 07:53:37
 set PATH $PATH /Users/simon/.local/bin
