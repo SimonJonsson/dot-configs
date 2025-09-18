@@ -1,5 +1,5 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   opts = {
     auto_install = true,
     ensure_installed = {
