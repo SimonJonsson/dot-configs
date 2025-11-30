@@ -5,6 +5,14 @@ mkdir -p ~/.config
 chmod +x ./symlinks.sh
 ./symlinks.sh
 
+stow -t ~ nvim
+stow -t ~ tmux
+stow -t ~ alacritty
+stow -t ~ aerospace
+stow -t ~ pypoetry
+stow -t ~ fish
+stow -t ~ yazi
+
 xcode-select --install
 
 # Install Homebrew if not installed
@@ -40,8 +48,9 @@ chsh -s $(which fish)
 brew install yazi
 brew install lazygit
 brew install neovim
-brew install alacritty
+brew install --cask alacritty
 brew install tmux
+brew install stow
 
 # Install Tmux Plugin Manager (tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
