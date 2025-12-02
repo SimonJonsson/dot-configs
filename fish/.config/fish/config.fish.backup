@@ -6,16 +6,6 @@ end
 set PATH $PATH /Users/simonjonsson/.local/bin
 
 alias prun='poetry run nvim'
-
-# Run nvim with palmtree's uv environment
-function pn
-    uv run --project /Users/simon/Repos/palmtree nvim $argv
-end
-
-# Run arbitrary commands with palmtree's uv environment
-function puv
-    uv run --project /Users/simon/Repos/palmtree $argv
-end
 alias vim='nvim'
 alias cls='clear'
 alias tmuxkill='tmux kill-server && tmux || tmux'
@@ -29,6 +19,3 @@ set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
 
 # Created by `pipx` on 2025-03-14 07:53:37
 set PATH $PATH /Users/simon/.local/bin
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/simon/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/simon/Downloads/google-cloud-sdk/path.fish.inc'; end
