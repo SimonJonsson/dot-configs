@@ -32,3 +32,6 @@ set PATH $PATH /Users/simon/.local/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/simon/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/simon/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+# Created by `pipx` on 2026-02-24 16:52:06
+set PATH $PATH /home/simon/.local/bin

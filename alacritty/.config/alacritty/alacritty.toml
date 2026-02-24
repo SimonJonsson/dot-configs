@@ -1,4 +1,4 @@
-general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
+general.import = ["~/.config/alacritty/themes/tokyonight/tokyonight_storm.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -16,6 +16,10 @@ decorations = "None"
 
 [keyboard]
 bindings = [
-{ key = "Insert", mods = "Shift", action = "Paste" },
-{ key = "Insert", mods = "Control", action = "Copy" }
+    { key = "Insert", mods = "Shift", action = "Paste" },
+    { key = "Insert", mods = "Control", action = "Copy" },
 ]
+
+[terminal.shell]
+program = "/usr/bin/fish"
+args = ["-l", "-c", "tmux attach || tmux -2"]

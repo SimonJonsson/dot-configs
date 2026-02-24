@@ -1,3 +1,3 @@
-function python --wraps=python3.12 --description 'alias python python3.12'
-    python3.12 $argv
+function python --wraps=python3.14 --description 'alias python python3.14'
+    python3.14 $argv
 end
