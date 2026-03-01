@@ -9,16 +9,6 @@ return {
     },
   },
 
-  -- Linter: mypy
-  {
-    "mfussenegger/nvim-lint",
-    opts = {
-      linters_by_ft = {
-        python = { "mypy" },
-      },
-    },
-  },
-
   -- Debugger: debugpy
   {
     "mfussenegger/nvim-dap",
@@ -42,7 +32,6 @@ return {
       ensure_installed = {
         "black",
         "isort",
-        "mypy",
         "debugpy",
       },
     },

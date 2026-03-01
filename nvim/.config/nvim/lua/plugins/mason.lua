@@ -12,7 +12,6 @@ return {
       "gopls",
       "lua-language-server",
       "marksman",
-      "mypy",
       "pyright",
       "ruff-lsp",
       "rust-analyzer",

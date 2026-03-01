@@ -23,3 +23,6 @@ bindings = [
 [terminal.shell]
 program = "/usr/bin/fish"
 args = ["-l", "-c", "tmux attach || tmux -2"]
+
+[terminal]
+osc52 = "CopyPaste"
