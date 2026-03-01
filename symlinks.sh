@@ -16,3 +16,4 @@ stow -t ~ nvim
 stow -t ~ alacritty
 stow -t ~ hypr
 stow -t ~ pypoetry
+stow -t ~ waybar
