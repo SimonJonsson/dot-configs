@@ -5,7 +5,8 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
-      inlay_hints = { enabled = true },
+      -- inlay hints off by default; toggle with <leader>uh
+      inlay_hints = { enabled = false },
     },
   },
 }
