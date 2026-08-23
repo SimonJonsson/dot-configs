@@ -1,1 +1,3 @@
 shaders/
+# timestamped backups left by omarchy refresh and by hand-editing
+*.bak.*
