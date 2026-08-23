@@ -1,0 +1,11 @@
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+
+# tmux writes client logs into whatever directory it was started from
+tmux-client-*.log
+
+# Timestamped backups left behind by omarchy refresh and friends
+*.bak
+*.bak.[0-9]*
