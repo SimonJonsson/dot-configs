@@ -6,3 +6,9 @@ debug
 foo.*
 *.log
 data
+
+# machine-specific: Omarchy theme plumbing (relative symlinks into
+# ~/.local/state/omarchy, live-only so stow never touches them)
+lua/plugins/theme.lua
+lua/plugins/omarchy-theme-hotreload.lua
+plugin/
