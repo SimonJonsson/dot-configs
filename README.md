@@ -45,6 +45,7 @@ Each top-level directory is a stow package: its contents mirror `$HOME`.
 | `nvim`      | `~/.config/nvim`      | everywhere     |
 | `pypoetry`  | `~/.config/pypoetry`  | everywhere     |
 | `yazi`      | `~/.config/yazi`      | everywhere     |
+| `herdr`     | `~/.config/herdr/config.toml` | everywhere |
 | `fish`      | `~/.config/fish`      | where fish is installed |
 | `alacritty` | `~/.config/alacritty` | macOS only     |
 | `aerospace` | `~/.config/aerospace` | macOS only     |
@@ -52,7 +53,25 @@ Each top-level directory is a stow package: its contents mirror `$HOME`.
 | `waybar`    | `~/.config/waybar`    | not linked — see below |
 
 To add a package, create the directory and add its name to `STOW_COMMON`,
-`STOW_LINUX` or `STOW_MACOS` in `install.sh`.
+`STOW_LINUX` or `STOW_MACOS` in `install.sh`. If the program keeps runtime
+state next to its config (herdr writes sockets, logs and `session.json` into
+`~/.config/herdr`), also add the directory to `STOW_KEEP_DIRS` so stow links
+the file rather than folding the whole directory into the repo.
+
+## herdr
+
+`herdr/.config/herdr/config.toml` mirrors the Omarchy tmux config: workspace,
+tab and pane keys under a `ctrl+space` prefix, terminal palette, no gaps. Reload
+a running server after editing it with `herdr server reload-config`.
+
+## Agent skills and configs
+
+Skills and settings for the coding-agent CLIs (Claude Code, Codex, OpenCode,
+pi, ...) live in a separate repo,
+[agent-configs](https://github.com/SimonJonsson/agent-configs), with its own
+`install.sh` that links them into every provider on the machine. They are kept
+apart from this repo because they are shared across tools rather than tied to
+a desktop, and change on a different cadence.
 
 ## tmux on Omarchy
 

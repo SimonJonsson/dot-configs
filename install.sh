@@ -111,6 +111,7 @@ PKGS_ARCH=(
     ripgrep fd unzip wl-clipboard
     lazygit yazi python-pipx
     ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd
+    herdr   # from the omarchy repo; fails harmlessly on plain Arch
 )
 
 PKGS_BREW=(
@@ -171,7 +172,13 @@ install_packages_macos() {
 # ----------------------------------------------------------------- links ----
 
 # Stow packages to link on every machine.
-STOW_COMMON=(tmux nvim pypoetry yazi)
+#   herdr   - config.toml only; the rest of ~/.config/herdr is sockets and logs
+STOW_COMMON=(tmux nvim pypoetry yazi herdr)
+
+# Directories stow must never fold into a single link to the repo, because the
+# program writes runtime state next to the tracked file. Created before linking
+# so stow links the file inside instead of the directory.
+STOW_KEEP_DIRS=(.config/herdr)
 
 # Linux-only.
 #   hypr    - Omarchy 4 Lua config: keybindings, grouping, look and feel
@@ -242,6 +249,10 @@ stow_pkg() {
 
 link_configs() {
     run mkdir -p "$HOME/.config"
+    local d
+    for d in "${STOW_KEEP_DIRS[@]}"; do
+        run mkdir -p "$HOME/$d"
+    done
 
     local packages=("${STOW_COMMON[@]}")
     if [[ $OS == linux ]]; then

@@ -1,5 +1,9 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # Omarchy's omarchy-fish package turns on vi mode system-wide in
+    # /usr/share/fish/vendor_conf.d/init.fish. That drops the emacs-style
+    # bindings (ctrl-f accepts the autosuggestion, ctrl-a/ctrl-e, ...) used on
+    # the Mac. config.fish runs after vendor_conf.d, so restore them here.
+    fish_default_key_bindings
 end
 
 # Created by `pipx` on 2025-03-12 09:34:35
