@@ -55,3 +55,13 @@
 -- Enable touchpad gestures for moving focus (helpful on scrolling layout).
 -- hl.gesture({ fingers = 3, direction = "left", action = function() hl.dispatch(hl.dsp.focus({ direction = "l" })) end })
 -- hl.gesture({ fingers = 3, direction = "right", action = function() hl.dispatch(hl.dsp.focus({ direction = "r" })) end })
+
+-- Go60: US layout with Swedish letters on AltGr (AltGr+W = å, AltGr+Q = ä,
+-- AltGr+P = ö, AltGr+5 = €). The Go60 firmware sends these chords as combos.
+-- See ~/Repos/go60-zmk-config/README.md.
+hl.config({
+  input = {
+    kb_layout = "us",
+    kb_variant = "altgr-intl",
+  },
+})
