@@ -118,10 +118,11 @@ PKGS_BREW=(
     stow git curl tmux neovim fish
     ripgrep fd
     lazygit yazi pipx
-    coreutils
+    coreutils herdr
 )
 
 CASKS_BREW=(
+    ghostty
     alacritty
     font-caskaydia-mono-nerd-font
     font-jetbrains-mono-nerd-font
@@ -188,7 +189,7 @@ STOW_KEEP_DIRS=(.config/herdr)
 #               carries the CSI-u bindings tmux needs; ours would clobber both
 STOW_LINUX=(hypr)
 
-STOW_MACOS=(alacritty aerospace)
+STOW_MACOS=(ghostty alacritty wezterm aerospace)
 
 # Move anything real that sits where a symlink needs to go into a timestamped
 # backup, so a fresh machine links cleanly without stow bailing out.
@@ -271,6 +272,26 @@ link_configs() {
     local pkg
     for pkg in "${packages[@]}"; do
         stow_pkg "$pkg"
+    done
+}
+
+# ------------------------------------------------------------ mac apps ----
+
+# Small launcher apps in ~/Applications, so Spotlight finds them by name.
+build_mac_apps() {
+    local src name app
+    for src in "$REPO_DIR"/apps/*.applescript; do
+        name=$(basename "$src" .applescript)
+        app="$HOME/Applications/$name.app"
+        run mkdir -p "$HOME/Applications"
+        run rm -rf "$app"
+        run osacompile -o "$app" "$src" || { warn "failed to build $name.app"; continue; }
+        # Borrow Ghostty's icon so the launcher is recognisable in Spotlight.
+        [[ -f /Applications/Ghostty.app/Contents/Resources/Ghostty.icns ]] \
+            && run cp /Applications/Ghostty.app/Contents/Resources/Ghostty.icns \
+                "$app/Contents/Resources/applet.icns"
+        run touch "$app"
+        ok "built $app"
     done
 }
 
@@ -372,6 +393,11 @@ if $DO_LINKS; then
     link_configs
 else
     skip "skipped"
+fi
+
+if [[ $OS == macos ]] && $DO_LINKS; then
+    step "Launcher apps"
+    build_mac_apps
 fi
 
 if $DO_PLUGINS; then

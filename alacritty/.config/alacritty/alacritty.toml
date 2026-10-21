@@ -16,6 +16,8 @@ option_as_alt = "OnlyLeft"
 padding.x = 14
 padding.y = 14
 decorations = "None"
+opacity = 0.9
+blur = true
 
 [keyboard]
 bindings = [

@@ -1,0 +1,31 @@
+# Mirrors alacritty/.config/alacritty/alacritty.toml and
+# wezterm/.config/wezterm/wezterm.lua so every terminal looks and behaves the same.
+
+theme = TokyoNight Storm
+
+font-family = CaskaydiaMono Nerd Font
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+
+window-padding-x = 14
+window-padding-y = 14
+macos-titlebar-style = hidden
+
+background-opacity = 0.85
+background-blur = 20
+
+# Left Option = Alt (herdr chords); right Option untouched so GO60 AltGr
+# combos (a+e etc.) compose åäö via the U.S. Swedish AltGr layout.
+macos-option-as-alt = left
+
+keybind = shift+insert=paste_from_clipboard
+keybind = ctrl+insert=copy_to_clipboard
+keybind = shift+enter=text:\x1b\r
+
+# OSC 52 both ways, like alacritty's osc52 = "CopyPaste".
+clipboard-read = allow
+clipboard-write = allow
+
+# tmux owns tabs and splits. The Herdr launcher (apps/Herdr.applescript)
+# overrides this to run herdr instead.
+command = /opt/homebrew/bin/fish -l -c "tmux attach || tmux -2"

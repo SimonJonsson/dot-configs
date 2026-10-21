@@ -47,7 +47,9 @@ Each top-level directory is a stow package: its contents mirror `$HOME`.
 | `yazi`      | `~/.config/yazi`      | everywhere     |
 | `herdr`     | `~/.config/herdr/config.toml` | everywhere |
 | `fish`      | `~/.config/fish`      | where fish is installed |
+| `ghostty`   | `~/.config/ghostty`   | macOS only     |
 | `alacritty` | `~/.config/alacritty` | macOS only     |
+| `wezterm`   | `~/.config/wezterm`   | macOS only     |
 | `aerospace` | `~/.config/aerospace` | macOS only     |
 | `hypr`      | `~/.config/hypr`      | not linked — see below |
 | `waybar`    | `~/.config/waybar`    | not linked — see below |
@@ -63,6 +65,10 @@ the file rather than folding the whole directory into the repo.
 `herdr/.config/herdr/config.toml` mirrors the Omarchy tmux config: workspace,
 tab and pane keys under a `ctrl+space` prefix, terminal palette, no gaps. Reload
 a running server after editing it with `herdr server reload-config`.
+
+On macOS, `install.sh` also builds a launcher app in `~/Applications` for each
+script in `apps/`: type "herdr" or "tmux" into Spotlight and it opens a separate
+Ghostty instance running that, while plain Ghostty keeps opening tmux.
 
 ## Agent skills and configs
 
