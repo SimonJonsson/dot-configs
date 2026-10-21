@@ -27,6 +27,11 @@ alias lg='lazygit'
 alias dbx_stg='rm -f ~/.databrickscfg && cp ~/.databrickscfg_stg ~/.databrickscfg'
 alias dbx_dev='rm -f ~/.databrickscfg && cp ~/.databrickscfg_dev ~/.databrickscfg'
 alias dbx_prd='rm -f ~/.databrickscfg && cp ~/.databrickscfg_prd ~/.databrickscfg'
+
+# claude in ultracode mode: xhigh effort + standing dynamic-workflow orchestration.
+# ultracode has no persistable settings key, so it has to be layered in per launch.
+# The start-work / start-bugfix skills launch worktree sessions through this.
+alias uc='claude --settings ~/.claude/ultracode.json'
 #
 # Ensure LLVM clangd takes precedence over Apple clangd
 set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
@@ -39,3 +44,11 @@ if [ -f '/Users/simon/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/sim
 
 # Created by `pipx` on 2026-02-24 16:52:06
 set PATH $PATH /home/simon/.local/bin
+set -gx GOOGLE_CLOUD_PROJECT level-dragon-404009
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# machine-local secrets, not in the repo
+test -f ~/.secrets.fish; and source ~/.secrets.fish

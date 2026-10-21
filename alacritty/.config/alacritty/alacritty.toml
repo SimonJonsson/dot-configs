@@ -7,9 +7,12 @@ TERM = "xterm-256color"
 normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
 bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
 italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-size = 9
+size = 12
 
 [window]
+# Left Option = Alt (herdr chords); right Option untouched so GO60 AltGr
+# combos (a+e etc.) compose åäö via the U.S. Swedish AltGr layout.
+option_as_alt = "OnlyLeft"
 padding.x = 14
 padding.y = 14
 decorations = "None"
@@ -18,11 +21,11 @@ decorations = "None"
 bindings = [
     { key = "Insert", mods = "Shift", action = "Paste" },
     { key = "Insert", mods = "Control", action = "Copy" },
-  { key = "Return", mods = "Shift", chars = "\u001B\r" },
+    { key = "Return", mods = "Shift", chars = "\u001B\r" },
 ]
 
 [terminal.shell]
-program = "/usr/bin/fish"
+program = "/opt/homebrew/bin/fish"
 args = ["-l", "-c", "tmux attach || tmux -2"]
 
 [terminal]

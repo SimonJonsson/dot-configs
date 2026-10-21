@@ -20,6 +20,12 @@ return {
             ["textDocument/diagnostic"] = function() end,
             ["workspace/diagnostic"] = function() end,
           },
+          -- resolve imports against whatever `python` is on PATH (active venv)
+          settings = {
+            python = {
+              pythonPath = vim.fn.exepath("python"),
+            },
+          },
         },
       },
     },

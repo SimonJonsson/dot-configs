@@ -7,3 +7,12 @@ vim.g.autoformat = true
 
 -- Indent guides (snacks.nvim indent) off by default; toggle with <leader>ug
 vim.g.snacks_indent = false
+
+-- Exclude bazel directories from file operations
+vim.opt.wildignore:append({
+  "bazel-*/**",
+  ".bazel-cache/**",
+  "bazel-bin/**",
+  "bazel-out/**",
+  "bazel-testlogs/**",
+})
