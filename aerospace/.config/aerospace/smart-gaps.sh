@@ -9,7 +9,7 @@
 # Run by the callbacks in aerospace.base.toml.
 #
 #   smart-gaps.sh            regenerate, reload only if the result changed
-#   smart-gaps.sh --force    regenerate and always reload
+#   smart-gaps.sh --force    regenerate and always reload, re-reading screen sizes
 #   smart-gaps.sh --no-reload  just write the file (install.sh, AeroSpace not running)
 
 # A lone window gets RATIO of the screen width, but never less than MIN_WIDTH
@@ -28,6 +28,7 @@ DIR="$HOME/.config/aerospace"
 BASE="$DIR/aerospace.base.toml"
 OUT="$DIR/aerospace.toml"
 LOCK="${TMPDIR:-/tmp}/aerospace-smart-gaps.lock"
+SCREENS="${TMPDIR:-/tmp}/aerospace-smart-gaps.screens"
 DIRTY="$LOCK/dirty"
 
 mode=${1:-}
@@ -46,9 +47,24 @@ fi
 trap 'rm -rf "$LOCK"' EXIT
 
 # Monitor name -> width in points, from AppKit (the names AeroSpace matches on).
+# osascript is most of this script's run time, and every millisecond here is
+# time the wrong gaps are on screen after a workspace switch, so the result is
+# cached and only re-read when a monitor shows up that the cache doesn't know
+# (or on --force, e.g. after changing a display's scaling).
 screen_widths() {
-    osascript -l JavaScript -e 'ObjC.import("AppKit");
-        $.NSScreen.screens.js.map(s => s.localizedName.js + "\t" + Math.round(s.frame.size.width)).join("\n")' 2>/dev/null
+    local monitors=$1 name
+    if [[ $mode != --force && -f $SCREENS ]]; then
+        while IFS= read -r name; do
+            awk -F'\t' -v n="$name" '$1 == n { f = 1 } END { exit !f }' "$SCREENS" \
+                || { rm -f "$SCREENS"; break; }
+        done <<<"$monitors"
+    else
+        rm -f "$SCREENS"
+    fi
+    [[ -f $SCREENS ]] || osascript -l JavaScript -e 'ObjC.import("AppKit");
+        $.NSScreen.screens.js.map(s => s.localizedName.js + "\t" + Math.round(s.frame.size.width)).join("\n")' \
+        >"$SCREENS" 2>/dev/null
+    cat "$SCREENS"
 }
 
 # Regex-escape a monitor name for AeroSpace's monitor patterns.
@@ -57,15 +73,21 @@ pattern() {
 }
 
 gaps_table() {
-    local id name width count outer inner widths
+    local id name width count outer inner widths monitors
     local outer_rules="" inner_rules=""
-    widths=$(screen_widths)
+    monitors=$(aerospace list-monitors --format '%{monitor-id}|%{monitor-name}' 2>/dev/null)
+    widths=$(screen_widths "$(printf '%s\n' "$monitors" | cut -d'|' -f2-)")
 
     while IFS='|' read -r id name; do
+        [[ -n $id ]] || continue # AeroSpace not running: no monitors listed
         width=$(printf '%s\n' "$widths" | awk -F'\t' -v n="$name" '$1 == n { print $2; exit }')
         width=${width:-0}
+        # Tiled windows on screen. An accordion stacks its windows and shows one
+        # at a time, so a workspace that is all accordion counts as one window.
         count=$(aerospace list-windows --monitor "$id" --workspace visible \
-            --format '%{window-layout}' 2>/dev/null | grep -vc '^floating$')
+            --format '%{window-layout}' 2>/dev/null \
+            | awk '$0 != "floating" { n++; if ($0 !~ /accordion$/) tiles = 1 }
+                   END { print (n && !tiles) ? 1 : n + 0 }')
 
         outer=0
         if ((count <= 1 && width > MIN_WIDTH)); then
@@ -77,7 +99,7 @@ gaps_table() {
 
         outer_rules+="{ monitor.'$(pattern "$name")' = $outer }, "
         inner_rules+="{ monitor.'$(pattern "$name")' = $inner }, "
-    done < <(aerospace list-monitors --format '%{monitor-id}|%{monitor-name}' 2>/dev/null)
+    done <<<"$monitors"
 
     cat <<EOF
 

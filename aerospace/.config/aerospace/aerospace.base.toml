@@ -95,8 +95,9 @@ preset = 'qwerty'
 # '''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+# Both also re-run smart-gaps.sh: an all-accordion workspace counts as one window.
+alt-slash = ['layout tiles horizontal vertical', 'exec-and-forget ~/.config/aerospace/smart-gaps.sh']
+alt-comma = ['layout accordion horizontal vertical', 'exec-and-forget ~/.config/aerospace/smart-gaps.sh']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
