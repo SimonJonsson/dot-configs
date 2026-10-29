@@ -8,3 +8,7 @@ vim.keymap.set("n", "<leader>ul", function()
   vim.wo.number = on
   vim.wo.relativenumber = on
 end, { desc = "Toggle Line Numbers (relative)" })
+
+-- Keep the cursor line centred when paging half a screen up or down
+vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz", { desc = "Half page down (centred)" })
+vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz", { desc = "Half page up (centred)" })
