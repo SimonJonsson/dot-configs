@@ -1,6 +1,8 @@
--- avante itself comes from the lazyvim.plugins.extras.ai.avante extra; this only swaps the provider
+-- Disabled: the lazyvim.plugins.extras.ai.avante extra is off in lazyvim.json.
+-- To re-enable, add the extra back and drop `enabled = false`; this only swaps the provider.
 return {
   "yetone/avante.nvim",
+  enabled = false,
   opts = {
     provider = "baseten",
     providers = {

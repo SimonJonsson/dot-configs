@@ -77,7 +77,7 @@ return {
 		priority = 1000,
 	},
 	{
-		"gthelding/monokai-pro.nvim",
+		"loctvl842/monokai-pro.nvim",
 		lazy = true,
 		priority = 1000,
 	},
@@ -101,6 +101,16 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = true,
 		priority = 1000,
+		-- Match the terminals (TokyoNight Storm) and let their background
+		-- opacity show through instead of painting a solid one.
+		opts = {
+			style = "storm",
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		},
 	},
 	{
 		"OldJobobo/miasma.nvim",
