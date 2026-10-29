@@ -60,6 +60,17 @@ state next to its config (herdr writes sockets, logs and `session.json` into
 `~/.config/herdr`), also add the directory to `STOW_KEEP_DIRS` so stow links
 the file rather than folding the whole directory into the repo.
 
+## AeroSpace gaps
+
+AeroSpace only supports fixed gaps, so `aerospace/.config/aerospace/smart-gaps.sh`
+generates `~/.config/aerospace/aerospace.toml` from the tracked
+`aerospace.base.toml` plus a `[gaps]` table for each monitor. A single window on
+a wide screen is centred; with two or more windows there are no side gaps, so
+they get the whole screen. AeroSpace re-runs the script on focus, workspace and
+monitor changes, so edit `aerospace.base.toml` and the change is picked up on
+the next focus change (or press `alt-shift-;` then `esc` to force a reload).
+Tune `RATIO` and `MIN_WIDTH` at the top of the script.
+
 ## herdr
 
 `herdr/.config/herdr/config.toml` mirrors the Omarchy tmux config: workspace,

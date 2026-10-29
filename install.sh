@@ -179,7 +179,9 @@ STOW_COMMON=(tmux nvim pypoetry yazi herdr)
 # Directories stow must never fold into a single link to the repo, because the
 # program writes runtime state next to the tracked file. Created before linking
 # so stow links the file inside instead of the directory.
-STOW_KEEP_DIRS=(.config/herdr)
+#   aerospace - smart-gaps.sh writes the real aerospace.toml next to the tracked
+#               aerospace.base.toml, so it must not land in the repo
+STOW_KEEP_DIRS=(.config/herdr .config/aerospace)
 
 # Linux-only.
 #   hypr    - Omarchy 4 Lua config: keybindings, grouping, look and feel
@@ -273,6 +275,12 @@ link_configs() {
     for pkg in "${packages[@]}"; do
         stow_pkg "$pkg"
     done
+
+    # aerospace.toml is generated from aerospace.base.toml (see smart-gaps.sh).
+    if [[ $OS == macos ]]; then
+        run "$HOME/.config/aerospace/smart-gaps.sh" --no-reload \
+            && ok "generated aerospace.toml" || warn "smart-gaps.sh failed"
+    fi
 }
 
 # ------------------------------------------------------------ mac apps ----

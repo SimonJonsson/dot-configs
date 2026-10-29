@@ -36,7 +36,15 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = [
+    'move-mouse monitor-lazy-center',
+    'exec-and-forget ~/.config/aerospace/smart-gaps.sh',
+]
+
+# Window count on screen changes whenever focus or workspace does (open, close,
+# move to another workspace), so recompute the gaps then.
+on-focus-changed = ['exec-and-forget ~/.config/aerospace/smart-gaps.sh']
+exec-on-workspace-change = ['/bin/bash', '-c', '~/.config/aerospace/smart-gaps.sh']
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -48,22 +56,11 @@ automatically-unhide-macos-hidden-apps = false
 [key-mapping]
 preset = 'qwerty'
 
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
-# Possible values:
-# - Constant:     gaps.outer.top = 8
-# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
-#                 In this example, 24 is a default value when there is no match.
-#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
-#                 See:
-#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-[gaps]
-inner.horizontal = [{ monitor.'DELL' = 10 }, 0]
-inner.vertical = [{ monitor.'DELL' = 10 }, 0]
-# Ultrawide: pad the sides so a lone window sits centred; laptop stays tight.
-outer.left = [{ monitor.'DELL' = 420 }, 0]
-outer.bottom = 0
-outer.top = 0
-outer.right = [{ monitor.'DELL' = 420 }, 0]
+# Gaps are not set here. smart-gaps.sh builds the real aerospace.toml from this
+# file and appends a [gaps] table per monitor: a lone window on a wide screen is
+# centred, two or more windows get the whole screen. It re-runs on the callbacks
+# below, so edits to this file are picked up on the next focus change (or
+# alt-shift-; esc to force it).
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -152,10 +149,11 @@ alt-shift-semicolon = 'mode service'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
+esc = ['exec-and-forget ~/.config/aerospace/smart-gaps.sh --force', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = [
     'layout floating tiling',
+    'exec-and-forget ~/.config/aerospace/smart-gaps.sh',
     'mode main',
 ] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
